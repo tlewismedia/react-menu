@@ -1,25 +1,35 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+import Header from './components/Header';
+import Menu from './components/Menu';
+
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+    this.state = {
+      menuIsActive: false
+    };
+  }
+
+  handleClick(event){
+    this.setState({menuIsActive: !this.state.menuIsActive})
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <Header 
+          menuIsActive={this.state.menuIsActive}
+          handleClick={this.handleClick}/>
+        <Menu menuIsActive={this.state.menuIsActive}/>
+        <div className="container">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo optio nulla, ratione rem dolores incidunt enim vitae minima consequatur doloribus, officia dicta iusto non distinctio architecto unde odio, sed deleniti.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo optio nulla, ratione rem dolores incidunt enim vitae minima consequatur doloribus, officia dicta iusto non distinctio architecto unde odio, sed deleniti.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo optio nulla, ratione rem dolores incidunt enim vitae minima consequatur doloribus, officia dicta iusto non distinctio architecto unde odio, sed deleniti.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo optio nulla, ratione rem dolores incidunt enim vitae minima consequatur doloribus, officia dicta iusto non distinctio architecto unde odio, sed deleniti.</p>
+        </div>
       </div>
     );
   }
